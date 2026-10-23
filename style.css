@@ -1,0 +1,349 @@
+/* ==================================================
+   MY BIBLE - "OPEN BOOK" THEME
+   Load order in <head>:
+     1. style.css
+     2. bible-enhance.css
+     3. bible-book.css   <- this file
+   Pure CSS: no images needed.
+================================================== */
+
+:root {
+    --wood:        #3b2417;
+    --leather:     #5a2f1b;
+    --leather-dk:  #3d1f10;
+    --gold:        #d9b872;
+    --gold-dk:     #a8844f;
+    --paper:       #f8f0dc;
+    --paper-edge:  #e6d6b3;
+    --ink:         #3a2a1a;
+    --ink-soft:    #7a6448;
+    --red:         #8b2e2e;
+    --book-font:   "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+
+/* ---------- DESK (page background) ---------- */
+
+body {
+    background-color: var(--wood);
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 0px,
+            rgba(255, 255, 255, 0.035) 2px,
+            transparent 2px,
+            transparent 7px
+        ),
+        radial-gradient(ellipse at 50% 0%, rgba(255, 220, 150, 0.12), transparent 60%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--book-font);
+}
+
+
+/* ---------- NAVIGATION (leather strap) ---------- */
+
+nav {
+    background: linear-gradient(180deg, var(--leather) 0%, var(--leather-dk) 100%);
+    border-bottom: 2px solid var(--gold-dk);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.nav-logo {
+    color: var(--gold);
+    font-family: var(--book-font);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.nav-right { color: #e8d9b8; }
+.nav-right strong { color: var(--gold); }
+
+.logout {
+    border: 1px solid var(--gold-dk);
+    color: var(--gold);
+    background: transparent;
+}
+
+.logout:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--leather-dk);
+}
+
+
+/* ---------- HERO (embossed book cover) ---------- */
+
+.hero {
+    background:
+        radial-gradient(circle at 80% 20%, rgba(255, 220, 150, 0.12), transparent 50%),
+        linear-gradient(135deg, #6a3820 0%, var(--leather-dk) 100%);
+    color: var(--gold);
+    border-radius: 12px;
+    box-shadow:
+        inset 0 0 0 6px var(--leather-dk),
+        inset 0 0 0 8px var(--gold-dk),
+        inset 0 0 40px rgba(0, 0, 0, 0.5),
+        0 14px 30px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
+.hero h1 {
+    color: var(--gold);
+    font-family: var(--book-font);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7), 0 0 1px #fff3;
+}
+
+.hero p { color: #e8d9b8; font-style: italic; }
+.hero-icon { color: var(--gold); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); }
+
+
+/* ---------- SMALL CARDS (parchment notes) ---------- */
+
+.language-card,
+.search-card,
+.controls-card {
+    background: linear-gradient(180deg, #faf3e0 0%, var(--paper) 100%);
+    border: 1px solid var(--paper-edge);
+    border-radius: 10px;
+    box-shadow:
+        inset 0 0 25px rgba(150, 110, 50, 0.15),
+        0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.search-card h2 {
+    color: var(--leather);
+    font-family: var(--book-font);
+}
+
+label { color: var(--ink-soft); }
+
+input[type="text"],
+input[type="number"],
+select {
+    background: #fffaf0;
+    border: 1px solid #cdb98f;
+    color: var(--ink);
+    font-family: var(--book-font);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    background: #fff;
+    border-color: var(--leather);
+    box-shadow: 0 0 0 4px rgba(168, 132, 79, 0.25);
+}
+
+button,
+.read-button {
+    background: linear-gradient(180deg, #74401f 0%, var(--leather-dk) 100%);
+    color: var(--gold);
+    border: 1px solid var(--gold-dk);
+    font-family: var(--book-font);
+    letter-spacing: 0.4px;
+}
+
+button:hover,
+.read-button:hover {
+    background: linear-gradient(180deg, #8a4b25 0%, var(--leather) 100%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ---------- THE OPEN BOOK ---------- */
+
+.bible-card {
+    position: relative;
+    padding: 46px 56px 40px;
+    margin-top: 34px;
+    background:
+        radial-gradient(ellipse at 50% 50%, #fcf6e6 0%, var(--paper) 60%, #ecdfbf 100%);
+    border: 14px solid var(--leather);
+    border-radius: 12px 12px 16px 16px;
+    box-shadow:
+        /* gold trim inside the cover */
+        inset 0 0 0 2px var(--gold-dk),
+        /* paper edge shading */
+        inset 0 0 60px rgba(150, 110, 50, 0.25),
+        /* cover outline */
+        0 0 0 2px var(--leather-dk),
+        /* stacked page edges at the bottom */
+        0 5px 0 -1px #f3e8cb,
+        0 7px 0 -2px #cdbb92,
+        0 10px 0 -3px #f3e8cb,
+        0 12px 0 -4px #cdbb92,
+        /* shadow on the desk */
+        0 32px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* Red ribbon bookmark */
+.bible-card::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: 80px;
+    width: 28px;
+    height: 110px;
+    background: linear-gradient(90deg, #7a1523 0%, #a82a3b 50%, #7a1523 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+    z-index: 3;
+}
+
+.bible-title {
+    border-bottom: none;
+    padding-bottom: 14px;
+    margin-bottom: 10px;
+}
+
+.cross {
+    color: var(--red);
+    text-shadow: 0 1px 0 #fff8;
+}
+
+.bible-title h2 {
+    color: var(--leather-dk);
+    font-family: var(--book-font);
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    text-transform: none;
+}
+
+.bible-title p {
+    color: var(--ink-soft);
+    font-style: italic;
+}
+
+/* Decorative divider under the heading */
+.bible-title::after {
+    content: "\2766";               /* floral heart ornament */
+    display: block;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: var(--gold-dk);
+}
+
+.language-badge {
+    background: transparent;
+    border: 1px solid var(--gold-dk);
+    color: var(--gold-dk);
+}
+
+
+/* ---------- TWO PAGES WITH A CENTER SPINE ---------- */
+
+.verses {
+    max-width: none;
+    column-count: 2;
+    column-gap: 90px;
+    text-align: justify;
+    hyphens: manual;
+    /* spine shadow down the middle */
+    background:
+        linear-gradient(
+            90deg,
+            transparent calc(50% - 45px),
+            rgba(110, 75, 30, 0.10) calc(50% - 18px),
+            rgba(90, 58, 20, 0.30) 50%,
+            rgba(110, 75, 30, 0.10) calc(50% + 18px),
+            transparent calc(50% + 45px)
+        );
+}
+
+/* Verses flow like a real printed paragraph */
+.verse,
+.verse:hover {
+    display: inline;
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.verse-number {
+    display: inline;
+    min-width: 0;
+    padding: 0;
+    margin: 0 4px 0 2px;
+    vertical-align: super;
+    font-size: 0.7em;
+    font-weight: bold;
+    line-height: 0;
+    color: var(--red);
+    text-align: left;
+}
+
+.verse-content,
+.original-verse,
+.translated-verse {
+    display: inline;
+    font-family: var(--book-font);
+    font-size: 1.18rem;
+    line-height: 1.9;
+    color: var(--ink);
+}
+
+.translated-verse em { color: var(--ink-soft); }
+
+
+/* ---------- PAGE TURN LINKS ---------- */
+
+.chapter-nav {
+    max-width: none;
+    margin-top: 30px;
+    border-top: 1px dotted #b79e6b;
+    column-span: all;
+}
+
+.chapter-link {
+    border: 1px solid var(--gold-dk);
+    background: transparent;
+    color: var(--leather);
+    font-family: var(--book-font);
+    font-style: italic;
+}
+
+.chapter-link:hover {
+    background: var(--leather);
+    border-color: var(--leather);
+    color: var(--gold);
+}
+
+
+/* ---------- ERROR / EMPTY / FOOTER ---------- */
+
+.error {
+    background: #f6dcd2;
+    border-color: #d9a99a;
+    color: #7a2318;
+}
+
+.empty { color: var(--ink-soft); }
+
+footer { color: #cdb98f; }
+footer a { color: var(--gold); }
+
+
+/* ---------- MOBILE: ONE PAGE AT A TIME ---------- */
+
+@media (max-width: 800px) {
+
+    .bible-card {
+        padding: 30px 20px 28px;
+        border-width: 9px;
+    }
+
+    .bible-card::before { right: 30px; height: 80px; width: 22px; }
+
+    .verses {
+        column-count: 1;
+        background: none;
+        text-align: left;
+    }
+
+    .verse-content,
+    .original-verse,
+    .translated-verse { font-size: 1.1rem; }
+
+    .bible-title h2 { font-size: 1.9rem; }
+}

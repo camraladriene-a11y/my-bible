@@ -1,0 +1,584 @@
+/* ==================================================
+   MY BIBLE - REFINED "OPEN BOOK" THEME
+   Load order in <head>:
+     1. style.css
+     2. bible-enhance.css
+     3. bible-book.css   <- this file
+================================================== */
+
+:root {
+    --desk-1:      #2a1f19;
+    --desk-2:      #17110d;
+    --cover:       #6b3a22;
+    --cover-dk:    #4a2615;
+    --gold:        #d3b06a;
+    --gold-dk:     #a8844f;
+    --paper:       #fbf6ea;
+    --paper-dk:    #efe4cb;
+    --ink:         #2e2318;
+    --ink-soft:    #86705a;
+    --accent:      #9b2d30;
+    --line:        #dccfae;
+    --book-font:   "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+
+::selection { background: rgba(211, 176, 106, 0.45); }
+
+
+/* ---------- DESK ---------- */
+
+body {
+    background:
+        radial-gradient(ellipse at 50% -10%, rgba(255, 214, 140, 0.16), transparent 55%),
+        linear-gradient(180deg, var(--desk-1) 0%, var(--desk-2) 100%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--book-font);
+}
+
+
+/* ---------- TOP BAR ---------- */
+
+nav {
+    background: rgba(23, 17, 13, 0.88);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(211, 176, 106, 0.28);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+    padding: 10px 28px;
+}
+
+.nav-logo {
+    color: var(--gold);
+    font-family: var(--book-font);
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-right {
+    color: #cdbd9c;
+    gap: 12px;
+    font-size: 0.92rem;
+}
+
+.nav-right strong { color: var(--gold); }
+
+.nav-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.nav-form select {
+    width: auto;
+    padding: 6px 14px;
+    font-size: 0.88rem;
+    font-family: var(--book-font);
+    color: var(--gold);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(211, 176, 106, 0.4);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.nav-form select:hover { background: rgba(255, 255, 255, 0.1); }
+
+.nav-form select:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(211, 176, 106, 0.22);
+}
+
+.nav-form select option {
+    background: #fffaf0;
+    color: var(--ink);
+}
+
+.logout {
+    padding: 6px 16px;
+    border: 1px solid rgba(211, 176, 106, 0.4);
+    border-radius: 999px;
+    color: var(--gold);
+    background: transparent;
+    font-size: 0.88rem;
+}
+
+.logout:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--cover-dk);
+}
+
+
+/* ---------- TITLE (no heavy banner) ---------- */
+
+.hero {
+    display: block;
+    max-width: 1100px;
+    margin: 22px auto 0;
+    padding: 0 20px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    text-align: center;
+}
+
+.hero h1 {
+    margin: 0;
+    font-family: var(--book-font);
+    font-size: 2.3rem;
+    font-weight: normal;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero p {
+    margin: 4px 0 0;
+    font-size: 0.98rem;
+    font-style: italic;
+    color: #bfae8a;
+}
+
+.hero-icon { display: none; }
+
+
+/* ---------- LAYOUT ---------- */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 20px 30px;
+    box-sizing: border-box;
+}
+
+
+/* ---------- SEARCH BAR (one slim row) ---------- */
+
+.search-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    background: rgba(251, 246, 234, 0.96);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.search-card h2 {
+    flex: 0 0 auto;
+    margin: 0;
+    font-family: var(--book-font);
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--cover);
+    white-space: nowrap;
+}
+
+.search-form {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+label { color: var(--ink-soft); }
+
+input[type="text"],
+input[type="number"],
+select {
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--book-font);
+    padding: 9px 14px;
+    border-radius: 10px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    background: #fff;
+    border-color: var(--cover);
+    box-shadow: 0 0 0 3px rgba(168, 132, 79, 0.25);
+}
+
+button {
+    background: linear-gradient(180deg, #7c4527 0%, var(--cover-dk) 100%);
+    color: var(--gold);
+    border: 1px solid var(--gold-dk);
+    border-radius: 10px;
+    padding: 9px 22px;
+    font-family: var(--book-font);
+    letter-spacing: 0.4px;
+}
+
+button:hover {
+    background: linear-gradient(180deg, #8f512e 0%, var(--cover) 100%);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ---------- THE OPEN BOOK ---------- */
+
+.bible-card {
+    position: relative;
+    margin: 6px 0 0;
+    padding: 0;
+    background: var(--paper);
+    border: 11px solid var(--cover);
+    border-radius: 10px 10px 14px 14px;
+    box-shadow:
+        inset 0 0 0 1px var(--gold-dk),
+        0 0 0 2px var(--cover-dk),
+        0 5px 0 -1px #f4ebd2,
+        0 7px 0 -2px #cdbd96,
+        0 10px 0 -3px #f4ebd2,
+        0 12px 0 -4px #cdbd96,
+        0 36px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Ribbon bookmark */
+.bible-card::before {
+    content: "";
+    position: absolute;
+    top: -11px;
+    right: 90px;
+    width: 26px;
+    height: 100px;
+    background: linear-gradient(90deg, #7a1523 0%, #b02f40 50%, #7a1523 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+    z-index: 5;
+}
+
+
+/* ---------- TWO EQUAL PAGES + SPINE ----------
+   LEFT page  = verses
+   RIGHT page = books and chapter numbers        */
+
+.book-spread {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    height: min(80vh, 780px);
+    min-height: 520px;
+}
+
+/* the crease in the middle */
+.book-spread::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        180deg,
+        rgba(60, 35, 10, 0.12),
+        rgba(60, 35, 10, 0.40) 50%,
+        rgba(60, 35, 10, 0.12)
+    );
+    pointer-events: none;
+    z-index: 4;
+}
+
+.page {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #c9b88f transparent;
+    background: radial-gradient(ellipse at 50% 40%, #fffaf0 0%, var(--paper) 62%, var(--paper-dk) 100%);
+}
+
+.page::-webkit-scrollbar { width: 8px; }
+.page::-webkit-scrollbar-thumb { background: #c9b88f; border-radius: 8px; }
+
+/* verses = LEFT page (shadow toward the spine on its right) */
+.page-right {
+    order: 1;
+    padding: 34px 48px 30px 44px;
+    box-shadow: inset -42px 0 42px -34px rgba(80, 50, 15, 0.38);
+}
+
+/* books and chapters = RIGHT page (shadow toward the spine on its left) */
+.page-left {
+    order: 2;
+    padding: 26px 30px 26px 50px;
+    box-shadow: inset 42px 0 42px -34px rgba(80, 50, 15, 0.38);
+}
+
+
+/* ---------- RIGHT PAGE: BOOKS / CHAPTERS ---------- */
+
+.toc-heading {
+    margin: 22px 0 8px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--gold-dk);
+    font-family: var(--book-font);
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    text-align: center;
+    color: var(--accent);
+}
+
+.toc-heading:first-child { margin-top: 0; }
+
+.toc-book {
+    margin: 0;
+    border-bottom: 1px dotted var(--line);
+}
+
+.toc-book summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 8px 8px;
+    font-family: var(--book-font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cover-dk);
+    border-radius: 8px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.toc-book summary::-webkit-details-marker { display: none; }
+
+.toc-book summary::before {
+    content: "\25B8";
+    display: inline-block;
+    width: 18px;
+    color: var(--gold-dk);
+}
+
+.toc-book[open] > summary::before { content: "\25BE"; }
+
+.toc-book summary:hover { background: rgba(168, 132, 79, 0.16); }
+
+.toc-book[open] > summary {
+    background: rgba(168, 132, 79, 0.14);
+    color: var(--accent);
+}
+
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+    gap: 6px;
+    padding: 10px 4px 14px;
+}
+
+.chapter-num {
+    display: block;
+    padding: 6px 0;
+    text-align: center;
+    font-family: var(--book-font);
+    font-size: 0.88rem;
+    text-decoration: none;
+    color: var(--cover);
+    background: #fffdf6;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    transition: all 0.15s ease;
+}
+
+.chapter-num:hover {
+    background: var(--gold);
+    border-color: var(--gold-dk);
+    color: var(--cover-dk);
+}
+
+.chapter-num.active {
+    background: var(--cover);
+    border-color: var(--cover);
+    color: var(--gold);
+    font-weight: bold;
+}
+
+
+/* ---------- LEFT PAGE: TITLE + VERSES ---------- */
+
+.bible-title {
+    text-align: center;
+    border-bottom: none;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+}
+
+.cross {
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-shadow: 0 1px 0 #fff9;
+}
+
+.bible-title h2 {
+    margin: 0;
+    font-family: var(--book-font);
+    font-size: 2.1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--cover-dk);
+}
+
+.bible-title p {
+    margin: 4px 0 10px;
+    font-style: italic;
+    color: var(--ink-soft);
+}
+
+.bible-title::after {
+    content: "\2766";
+    display: block;
+    margin-top: 8px;
+    font-size: 1.4rem;
+    color: var(--gold-dk);
+}
+
+.language-badge {
+    background: transparent;
+    border: 1px solid var(--gold-dk);
+    color: var(--gold-dk);
+    padding: 4px 14px;
+}
+
+.verses {
+    max-width: none;
+    margin: 0;
+    text-align: justify;
+    hyphens: manual;
+}
+
+.verse,
+.verse:hover {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+
+.verse-number {
+    display: inline;
+    min-width: 0;
+    padding: 0;
+    margin: 0 4px 0 3px;
+    vertical-align: super;
+    font-size: 0.68em;
+    font-weight: bold;
+    line-height: 0;
+    color: var(--accent);
+    text-align: left;
+}
+
+.verse-content,
+.original-verse,
+.translated-verse {
+    display: inline;
+    font-family: var(--book-font);
+    font-size: 1.14rem;
+    line-height: 1.95;
+    color: var(--ink);
+}
+
+.translated-verse em { color: var(--ink-soft); }
+
+
+/* ---------- PAGE TURN LINKS ---------- */
+
+.chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: none;
+    margin: 26px 0 0;
+    padding-top: 16px;
+    border-top: 1px dotted #b79e6b;
+}
+
+.chapter-link {
+    padding: 8px 18px;
+    border: 1px solid var(--gold-dk);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--cover);
+    font-family: var(--book-font);
+    font-style: italic;
+    font-weight: normal;
+}
+
+.chapter-link:hover {
+    background: var(--cover);
+    border-color: var(--cover);
+    color: var(--gold);
+}
+
+
+/* ---------- ERROR / EMPTY / FOOTER ---------- */
+
+.error {
+    background: #f6dcd2;
+    border-color: #d9a99a;
+    color: #7a2318;
+}
+
+.empty { color: var(--ink-soft); }
+
+footer {
+    padding: 26px 20px 38px;
+    color: #a99a7c;
+    font-size: 0.88rem;
+}
+
+footer a { color: var(--gold); }
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 800px) {
+
+    nav { flex-wrap: wrap; gap: 8px; padding: 10px 14px; }
+
+    .nav-welcome { display: none; }
+
+    .nav-right { flex-wrap: wrap; justify-content: flex-end; }
+
+    .hero h1 { font-size: 1.8rem; }
+
+    main { padding: 14px 12px 24px; }
+
+    .search-card { flex-direction: column; align-items: stretch; gap: 8px; }
+
+    .book-spread {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 0;
+    }
+
+    .book-spread::after { display: none; }
+
+    .page { overflow: visible; }
+
+    .page-right {
+        padding: 24px 18px;
+        box-shadow: none;
+    }
+
+    .page-left {
+        max-height: 340px;
+        overflow-y: auto;
+        padding: 18px;
+        box-shadow: inset 0 22px 22px -18px rgba(80, 50, 15, 0.35);
+        border-top: 1px solid rgba(90, 58, 20, 0.3);
+    }
+
+    .bible-card::before { right: 30px; height: 70px; width: 20px; }
+
+    .verse-content,
+    .original-verse,
+    .translated-verse { font-size: 1.08rem; }
+
+    .verses { text-align: left; }
+}
